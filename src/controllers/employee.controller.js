@@ -337,7 +337,7 @@ export const getEmployeeByCurrentProject = async (req, res) => {
         if (req.query?.startDate || req.query?.endDate) {
             const startDate = new Date(req.query?.startDate);
             const endDate = new Date(req.query?.endDate);
-            searchQuery.$or = [
+            searchQuery.$and = [
                 { joined: { $gte: new Date(startDate) } },
                 { exit: { $lte: new Date(endDate) } }
             ]
